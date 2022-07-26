@@ -38,7 +38,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 	// local & test
-	compileOnly("com.h2database:h2:2.1.214")
+	runtimeOnly("com.h2database:h2:2.1.214")
 	testImplementation("com.h2database:h2:2.1.214")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
