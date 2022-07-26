@@ -9,7 +9,7 @@ spring:
       enabled: true
   jpa:
     hibernate:
-      ddl-auto: create-drop  # Just for test use
+      ddl-auto: create  # Just for test use
     show-sql: true
     open-in-view: false
 
