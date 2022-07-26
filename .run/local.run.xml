@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="local" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" />
+    <module name="openmarket.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.choar.openmarket.OpenmarketApplication" />
+    <option name="VM_PARAMETERS" value="-Dspring.profile.active=local" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
