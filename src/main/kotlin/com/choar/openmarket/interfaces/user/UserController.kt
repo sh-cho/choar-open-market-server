@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("user")
 class UserController(
     private val userMapper: UserMapper,
     private val repository: UserRepository,
 ) {
 
-    @GetMapping("/")
+    @GetMapping
     fun findAll() = userMapper.map(repository.findAll())
 
-    @PostMapping("/login")
+    @PostMapping("login")
     fun login(@RequestBody loginRequest: UserLoginRequest) =
         userMapper.toDto(
             repository.findByUsernameAndPassword(loginRequest.username, loginRequest.password)
