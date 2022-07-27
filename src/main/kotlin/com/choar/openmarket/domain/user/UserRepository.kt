@@ -1,6 +1,6 @@
-package com.choar.openmarket.repository
+package com.choar.openmarket.domain.user
 
-import com.choar.openmarket.domain.User
+import com.choar.openmarket.domain.user.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

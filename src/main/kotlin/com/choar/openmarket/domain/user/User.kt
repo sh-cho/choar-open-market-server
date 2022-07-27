@@ -1,20 +1,16 @@
-package com.choar.openmarket.domain
+package com.choar.openmarket.domain.user
 
 import javax.persistence.*
 
 @Entity
 @Table(name = "users")
 class User(
-    @Column(nullable = false, unique = true)
     var username: String,
+    var password: String,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     var id: Long = 0L
-
-    @Column(nullable = false)
-    var password: String = ""
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -22,12 +18,17 @@ class User(
 
         other as User
 
+        if (username != other.username) return false
         if (id != other.id) return false
+        if (password != other.password) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return id?.hashCode() ?: 0
+        var result = username.hashCode()
+        result = 31 * result + id.hashCode()
+        result = 31 * result + password.hashCode()
+        return result
     }
 }

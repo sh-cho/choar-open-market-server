@@ -1,4 +1,4 @@
-package com.choar.openmarket.controller
+package com.choar.openmarket.interfaces.common
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
