@@ -1,8 +1,6 @@
 package com.choar.openmarket.interfaces.user
 
-import com.choar.openmarket.domain.user.User
 import com.choar.openmarket.domain.user.UserRepository
-import com.choar.openmarket.interfaces.common.UserDto
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,9 +19,10 @@ class UserController(
     @GetMapping("/")
     fun findAll() = userMapper.map(repository.findAll())
 
-    @PostMapping
-    fun login(@RequestBody userDto: UserDto) =
+    @PostMapping("/login")
+    fun login(@RequestBody loginRequest: UserLoginRequest) =
         userMapper.toDto(
-            repository.findByUsername(userDto.username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "noo!")
+            repository.findByUsernameAndPassword(loginRequest.username, loginRequest.password)
+                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "noo!")
         )
 }
