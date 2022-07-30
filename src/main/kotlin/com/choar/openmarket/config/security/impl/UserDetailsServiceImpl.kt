@@ -1,16 +1,16 @@
-package com.choar.openmarket.config.security
+package com.choar.openmarket.config.security.impl
 
+import com.choar.openmarket.config.security.UserAccount
 import com.choar.openmarket.domain.user.UserRepository
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Component
 
 @Component
-class AppUserDetailsService(
+class UserDetailsServiceImpl(
     private val userRepository: UserRepository,
 ) : UserDetailsService {
 
@@ -20,10 +20,7 @@ class AppUserDetailsService(
 
         val authorities = ArrayList<GrantedAuthority>()
         user.roles.forEach { authorities.add(SimpleGrantedAuthority(it.roleName)) }
-        return User(
-            user.username,
-            user.password,
-            authorities,
-        )
+
+        return UserAccount(user, authorities)
     }
 }

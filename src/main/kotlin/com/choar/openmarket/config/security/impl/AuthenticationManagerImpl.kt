@@ -1,4 +1,4 @@
-package com.choar.openmarket.config.security
+package com.choar.openmarket.config.security.impl
 
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
-class AppAuthenticationManager(
+class AuthenticationManagerImpl(
     private val userService: UserDetailsService,
     private val bCryptPasswordEncoder: BCryptPasswordEncoder,
 ): AuthenticationManager {

@@ -1,0 +1,39 @@
+= Open Market API
+:doctype: book
+:toc: left
+:toclevels: 4
+:source-highlighter: highlightjs
+:sectlinks:
+
+* 오픈마켓 API
+
+:sectnums:
+
+== 계정 (users)
+=== 회원가입
+==== buyer
+==== seller
+
+=== 로그인
+
+.request
+include::{snippets}/users/login/http-request.adoc[]
+
+.request-fields
+include::{snippets}/users/login/request-fields.adoc[]
+
+.response
+include::{snippets}/users/login/http-response.adoc[]
+
+.response-headers
+include::{snippets}/users/login/response-headers.adoc[]
+
+=== 로그아웃
+
+X
+
+== 상품 (products)
+
+== 장바구니 (cart)
+
+== 주문 (orders)

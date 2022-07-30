@@ -1,6 +1,6 @@
 package com.choar.openmarket.config
 
-import com.choar.openmarket.config.security.AppAuthenticationManager
+import com.choar.openmarket.config.security.impl.AuthenticationManagerImpl
 import com.choar.openmarket.config.security.JWTAuthenticationFilter
 import com.choar.openmarket.config.security.JWTAuthorizationFilter
 import com.choar.openmarket.config.security.JWTSecurityProperties
@@ -23,7 +23,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 class WebConfig(
     val userDetailsService: UserDetailsService,
     val securityProperties: JWTSecurityProperties,
-    val authenticationManager: AppAuthenticationManager,
+    val authenticationManager: AuthenticationManagerImpl,
 ) {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain? {

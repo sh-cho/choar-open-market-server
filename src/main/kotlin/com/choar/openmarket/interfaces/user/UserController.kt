@@ -1,21 +1,22 @@
 package com.choar.openmarket.interfaces.user
 
-import com.choar.openmarket.domain.user.UserRepository
-import org.springframework.http.HttpStatus
+import com.choar.openmarket.application.UserService
+import com.choar.openmarket.interfaces.common.UserDto
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.server.ResponseStatusException
+
 
 @RestController
 @RequestMapping("user")
 class UserController(
-    private val userMapper: UserMapper,
-    private val repository: UserRepository,
+    private val userService: UserService,
 ) {
 
+    // TODO: @AuthenticationPrincipal 로 정보 들고오기?
+    // (참고 - https://bbbicb.tistory.com/48)
     @GetMapping
-    fun findAll() = userMapper.map(repository.findAll())
+    @PreAuthorize("hasAuthority('ADMIN_USER')")
+    fun findAll(): List<UserDto> = userService.findAll()
 }
