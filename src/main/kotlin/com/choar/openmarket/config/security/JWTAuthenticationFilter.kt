@@ -60,6 +60,6 @@ class JWTAuthenticationFilter(
             .setExpiration(Date().add(Calendar.DAY_OF_MONTH, securityProperties.expirationTime))
             .signWith(Keys.hmacShaKeyFor(securityProperties.secret.toByteArray()), SignatureAlgorithm.HS512)
             .compact()
-        response.addHeader(securityProperties.headerString, securityProperties.tokenPrefix + token)
+        response.addHeader(securityProperties.headerString, "${securityProperties.tokenPrefix}$token")
     }
 }
