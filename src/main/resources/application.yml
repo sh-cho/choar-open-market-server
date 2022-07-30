@@ -12,6 +12,9 @@ spring:
       ddl-auto: create  # Just for test use
     show-sql: true
     open-in-view: false
+jwt-security:
+  secret: PseudoSecret-Pseudosecret-Please-Use-Ur-Own-Key-PseudoSecret-Pseudosecret
+  expiration-time: 7
 
 ---
 spring.config.activate.on-profile: prod
@@ -25,3 +28,5 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL82Dialect
 server:
   port: ${port:8080}
+#jwt-security:
+#  secret: ${JWT_SECRET}

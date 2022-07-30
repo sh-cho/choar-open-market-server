@@ -18,11 +18,4 @@ class UserController(
 
     @GetMapping
     fun findAll() = userMapper.map(repository.findAll())
-
-    @PostMapping("login")
-    fun login(@RequestBody loginRequest: UserLoginRequest) =
-        userMapper.toDto(
-            repository.findByUsernameAndPassword(loginRequest.username, loginRequest.password)
-                ?: throw ResponseStatusException(HttpStatus.NOT_FOUND, "noo!")
-        )
 }
