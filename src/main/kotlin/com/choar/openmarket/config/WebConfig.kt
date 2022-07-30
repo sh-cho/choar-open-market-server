@@ -35,7 +35,7 @@ class WebConfig(
             .authorizeRequests()
             .antMatchers("/api/**").permitAll()
             .antMatchers("/error/**").permitAll()
-            .antMatchers("/**").permitAll()
+            .antMatchers("/").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
             .anyRequest().authenticated()
             .and()
