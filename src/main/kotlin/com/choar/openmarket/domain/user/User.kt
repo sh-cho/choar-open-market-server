@@ -16,7 +16,7 @@ class User(
     var id: Long = 0L
 
     // TODO: FetchType.LAZY로 변경
-    @ManyToMany(fetch = FetchType.LAZY, cascade = [CascadeType.MERGE])
+    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
     @JoinTable(
         name = "user_role",
         joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
