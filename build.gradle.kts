@@ -116,5 +116,7 @@ tasks {
 		from(asciidoctor.get().outputDir) {
 			into("BOOT-INF/classes/static/docs")
 		}
+
+		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 	}
 }
