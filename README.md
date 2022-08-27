@@ -8,5 +8,8 @@
 
 - [ ] re-make all apis
 - [ ] graphql
-- [ ] restdocs
+- [x] restdocs
+
+## Reference
+- https://paullabworkspace.notion.site/API-3de756cc16224982812368f4e5cf1ffe
 
