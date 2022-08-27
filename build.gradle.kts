@@ -45,13 +45,14 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jjwtVersion")
 	implementation("io.jsonwebtoken:jjwt-api:$jjwtVersion")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:$jjwtVersion")
-	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+
+	kapt("org.springframework.boot:spring-boot-configuration-processor")
 
 	implementation("org.mapstruct:mapstruct:$mapstructVersion")
 	kapt("org.mapstruct:mapstruct-processor:$mapstructVersion")
 
 	// db
-	implementation("org.postgresql:postgresql:42.4.0")
+	implementation("org.postgresql:postgresql:42.4.1")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
 	// local & test
@@ -64,15 +65,15 @@ dependencies {
 	kaptTest("org.mapstruct:mapstruct-processor:$mapstructVersion")
 }
 
-tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
-	}
-}
-
 tasks {
 	val snippetsDir = file("build/generated-snippets")
+
+	withType<KotlinCompile> {
+		kotlinOptions {
+			freeCompilerArgs = listOf("-Xjsr305=strict")
+			jvmTarget = "17"
+		}
+	}
 
 	clean {
 		delete("src/main/resources/static/docs")
