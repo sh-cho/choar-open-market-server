@@ -23,7 +23,7 @@ jobs:
         with:
           registry: asia.gcr.io
           username: _json_key
-          password: ${{ secrets.GCR_JSON_KEY }}
+          password: ${{ secrets.GCP_SA_KEY }}
 
       - name: Build and push
         uses: docker/build-push-action@v3
