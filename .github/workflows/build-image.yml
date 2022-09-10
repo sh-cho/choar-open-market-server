@@ -3,15 +3,11 @@ name: Build and push image
 on:
   push:
     branches:
-      - 'main'
+      - main
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      id-token: write
 
     steps:
       - name: Checkout
@@ -20,26 +16,18 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - id: auth
-        name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v0
-        with:
-          token_format: access_token
-          workload_identity_provider: ${{ secrets.WIF_PROVIDER_NAME }}
-          service_account: ${{ secrets.OIDC_AUTH_SA_EMAIL }}
-
+      # TODO: Workload identity federation based auth
       - name: Login to GCR
         uses: docker/login-action@v2
         with:
           registry: gcr.io
-          username: oauth2accesstoken
-          password: ${{ steps.auth.outputs.access_token }}
+          username: _json_key
+          password: ${{ secrets.GCR_JSON_KEY }}
 
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          platforms: linux/amd64
+          context: open-market-server-app
           push: true
           tags: asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/server:latest
           cache-from: type=gha
