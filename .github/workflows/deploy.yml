@@ -23,3 +23,4 @@ jobs:
         with:
           image: asia.gcr.io/${{ secrets.GCP_PROJECT_ID }}/server:latest
           service: server
+          region: asia-northeast3
