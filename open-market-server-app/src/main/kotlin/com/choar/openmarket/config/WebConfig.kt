@@ -47,7 +47,7 @@ class WebConfig(
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource = UrlBasedCorsConfigurationSource().also { cors ->
         CorsConfiguration().apply {
-            allowedOrigins = listOf("*")
+            allowedOrigins = listOf("https://choar816.github.io")
             allowedMethods = listOf("POST", "PUT", "DELETE", "GET", "OPTIONS", "HEAD")
             allowedHeaders = listOf(
                 "Authorization",
