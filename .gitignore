@@ -250,3 +250,5 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,jetbrains,gradle,java,kotlin,terraform
+
+local.*.db

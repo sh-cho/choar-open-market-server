@@ -26,6 +26,8 @@ class JWTAuthenticationFilter(
     private val securityProperties: JWTSecurityProperties,
 ) : UsernamePasswordAuthenticationFilter() {
 
+    // TODO: use kotlinx.serialization
+
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse?): Authentication {
         return try {
             val mapper = jacksonObjectMapper()

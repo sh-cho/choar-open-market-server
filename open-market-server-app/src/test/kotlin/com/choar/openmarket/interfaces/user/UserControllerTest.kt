@@ -2,12 +2,13 @@ package com.choar.openmarket.interfaces.user
 
 import com.choar.openmarket.application.UserService
 import com.choar.openmarket.config.RestDocsConfiguration
-import com.choar.openmarket.interfaces.common.UserDto
+import com.choar.openmarket.helper.ConstrainedFields
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
 import org.json.JSONObject
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.mockito.BDDMockito.given
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -38,12 +39,13 @@ internal class UserControllerTest {
 
     @BeforeEach
     internal fun setUp() {
-        given(userService.findAll()).willReturn(
-            listOf(
-                UserDto("admin"),
-                UserDto("buyer1"),
-            )
-        )
+//        given(userService.findAll()).willReturn(
+//            listOf(
+//                UserDto("buyer1"),
+//                UserDto("buyer2"),
+//                UserDto("buyer3"),
+//            )
+//        )
     }
 
     @Test
@@ -69,6 +71,37 @@ internal class UserControllerTest {
                     ),
                     responseHeaders(
                         headerWithName("Authorization").description("Bearer Token (JWT)")
+                    ),
+                )
+            )
+    }
+
+    @Test
+    @DisplayName("구매자 회원가입")
+    fun signUpBuyer() {
+        val buyerSignupRequest = BuyerSignupRequest(
+            "vince_test",
+            "password123",
+            "01012341234",
+            "빈스",
+        )
+
+        val fields = ConstrainedFields(BuyerSignupRequest::class.java)
+
+        mockMvc.perform(
+            post("/user/signup/buyer")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(Json.encodeToString(buyerSignupRequest))
+        )
+            .andExpect(status().isOk)
+            .andDo(
+                document(
+                    "users/signup-buyer",
+                    requestFields(
+                        fields.withPath("username").description("유저명 (아이디)"),
+                        fields.withPath("password").description("패스워드"),
+                        fields.withPath("phoneNumber").description("핸드폰 번호"),
+                        fields.withPath("name").description("이름"),
                     ),
                 )
             )

@@ -12,6 +12,12 @@
 == 계정 (users)
 === 회원가입
 ==== buyer
+.request
+include::{snippets}/users/signup-buyer/http-request.adoc[]
+
+.request-fields
+include::{snippets}/users/signup-buyer/request-fields.adoc[]
+
 ==== seller
 
 === 로그인

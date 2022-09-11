@@ -37,6 +37,7 @@ class WebConfig(
             .antMatchers("/error/**").permitAll()
             .antMatchers("/").permitAll()
             .antMatchers(HttpMethod.POST, "/login").permitAll()
+            .antMatchers(HttpMethod.POST, "/**/signup/*").permitAll()
             .anyRequest().authenticated()
             .and()
             .addFilter(JWTAuthenticationFilter(authenticationManager, securityProperties))

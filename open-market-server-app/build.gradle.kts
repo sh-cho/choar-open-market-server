@@ -4,10 +4,11 @@ plugins {
 	id("org.springframework.boot") version "2.7.2"
 	id("io.spring.dependency-management") version "1.0.12.RELEASE"
 	id("org.asciidoctor.jvm.convert") version "3.3.2"
-	kotlin("jvm") version "1.6.21"
-	kotlin("plugin.spring") version "1.6.21"
-	kotlin("plugin.jpa") version "1.6.21"
-	kotlin("kapt") version "1.6.21"
+	kotlin("jvm") version "1.7.10"
+	kotlin("plugin.spring") version "1.7.10"
+	kotlin("plugin.jpa") version "1.7.10"
+	kotlin("plugin.serialization") version "1.7.10"
+	kotlin("kapt") version "1.7.10"
 }
 
 group = "com.choar"
@@ -19,6 +20,7 @@ java.sourceCompatibility = JavaVersion.VERSION_17
 val jjwtVersion = "0.11.5"
 val mapstructVersion = "1.5.2.Final"
 val h2Version = "2.1.214"
+val serializationVersion = "1.4.0"
 
 val asciidoctorExtensions: Configuration by configurations.creating
 
@@ -40,6 +42,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+	implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jjwtVersion")
