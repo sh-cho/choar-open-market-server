@@ -93,7 +93,7 @@ internal class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(Json.encodeToString(buyerSignupRequest))
         )
-            .andExpect(status().isOk)
+            .andExpect(status().isCreated)
             .andDo(
                 document(
                     "users/signup-buyer",

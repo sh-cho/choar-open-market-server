@@ -35,7 +35,7 @@ class UserController(
 
         return try {
             userService.save(buyerSignupRequest)
-            ResponseEntity(HttpStatus.OK)
+            ResponseEntity(HttpStatus.CREATED)
         } catch (e: Exception) {
             logger.warn(e.message)
             ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
