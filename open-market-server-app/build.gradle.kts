@@ -111,15 +111,6 @@ tasks {
 		inputs.dir(snippetsDir)
 	}
 
-	register<Copy>("copyDocument") {
-		dependsOn(asciidoctor)
-
-		destinationDir = file(".")
-		from(asciidoctor.get().outputDir) {
-			into("src/main/resources/static/docs")
-		}
-	}
-
 	bootJar {
 		dependsOn(asciidoctor)
 
