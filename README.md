@@ -2,7 +2,7 @@
 
 [![Build and push image](https://github.com/sh-cho/choar-open-market-server/actions/workflows/build-image.yml/badge.svg)](https://github.com/sh-cho/choar-open-market-server/actions/workflows/build-image.yml)
 [![Deploy Cloud Run](https://github.com/sh-cho/choar-open-market-server/actions/workflows/deploy.yml/badge.svg)](https://github.com/sh-cho/choar-open-market-server/actions/workflows/deploy.yml)
-[![deploy api document](https://github.com/sh-cho/choar-open-market-server/actions/workflows/docs.yml/badge.svg)](https://sh-cho.github.io/choar-open-market-server/)
+[![restdocs](https://github.com/sh-cho/choar-open-market-server/actions/workflows/pages.yml/badge.svg)](https://sh-cho.github.io/choar-open-market-server/)
 
 ⚒️ WIP
 
