@@ -99,7 +99,10 @@ tasks {
 		}
 		inProcess = org.asciidoctor.gradle.base.process.ProcessMode.JAVA_EXEC
 		forkOptions {
-			jvmArgs("--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.base/java.io=ALL-UNNAMED")
+			jvmArgs(
+				"--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED",
+				"--add-opens", "java.base/java.io=ALL-UNNAMED",
+			)
 		}
 
 		attributes(
