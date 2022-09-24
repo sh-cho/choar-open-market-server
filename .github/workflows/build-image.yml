@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'open-market-server-app/**'
 
 jobs:
   build-and-push:
