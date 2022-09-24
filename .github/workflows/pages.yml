@@ -44,6 +44,7 @@ jobs:
           path: 'open-market-server-app/build'
 
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
