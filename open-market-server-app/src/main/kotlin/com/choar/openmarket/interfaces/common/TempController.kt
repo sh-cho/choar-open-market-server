@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/")
 class TempController {
+    // TODO: spring actuator
     @GetMapping("/")
     fun ok() = "ok"
 }
