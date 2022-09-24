@@ -2,7 +2,6 @@ package com.choar.openmarket.config.security.impl
 
 import com.choar.openmarket.config.security.UserAccount
 import com.choar.openmarket.domain.user.UserRepository
-import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -18,9 +17,8 @@ class UserDetailsServiceImpl(
         val user = userRepository.findByUsername(s)
             ?: throw UsernameNotFoundException("The username $s doesn't exist")
 
-        val authorities = ArrayList<GrantedAuthority>()
-        user.roles.forEach { authorities.add(SimpleGrantedAuthority(it.roleName)) }
+        val authority = SimpleGrantedAuthority(user.roleName)
 
-        return UserAccount(user, authorities)
+        return UserAccount(user, authority)
     }
 }

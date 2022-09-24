@@ -97,6 +97,10 @@ tasks {
 		doFirst {
 			delete("src/main/resources/static/docs")
 		}
+		inProcess = org.asciidoctor.gradle.base.process.ProcessMode.JAVA_EXEC
+		forkOptions {
+			jvmArgs("--add-opens", "java.base/sun.nio.ch=ALL-UNNAMED", "--add-opens", "java.base/java.io=ALL-UNNAMED")
+		}
 
 		attributes(
 			mapOf("snippets" to snippetsDir)

@@ -1,5 +1,6 @@
 package com.choar.openmarket.interfaces.common
 
 data class UserDto(
-    var username: String,
+    val username: String,
+    val roleName: String,
 )

@@ -80,7 +80,7 @@ internal class UserControllerTest {
     @DisplayName("구매자 회원가입")
     fun signUpBuyer() {
         val buyerSignupRequest = BuyerSignupRequest(
-            "vince_test",
+            "vincetest",
             "password123",
             "01012341234",
             "빈스",
@@ -89,7 +89,7 @@ internal class UserControllerTest {
         val fields = ConstrainedFields(BuyerSignupRequest::class.java)
 
         mockMvc.perform(
-            post("/user/signup/buyer")
+            post("/users/signup/buyer")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(Json.encodeToString(buyerSignupRequest))
         )

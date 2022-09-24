@@ -6,7 +6,7 @@ import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
 
 @Serializable
-data class BuyerSignupRequest(
+data class SellerSignupRequest(
     @field:NotEmpty
     @field:Pattern(regexp = "[a-zA-Z\\d]{3,20}")
     val username: String,

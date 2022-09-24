@@ -18,4 +18,4 @@
 - [x] restdocs
 
 ## Reference
-- https://paullabworkspace.notion.site/API-3de756cc16224982812368f4e5cf1ffe
+- https://paullabworkspace.notion.site/API-7b57a2b656fd4e3790a6a360b69aa3ad

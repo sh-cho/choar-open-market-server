@@ -485,13 +485,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="title">request</div>
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /user/signup/buyer HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /users/signup/buyer HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Content-Length: 115
+Content-Length: 114
 Host: localhost:8080
 
 {
-  "username" : "vince_test",
+  "username" : "vincetest",
   "password" : "password123",
   "phoneNumber" : "01012341234",
   "name" : "빈스"
@@ -519,7 +519,8 @@ Host: localhost:8080
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>username</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">유저명 (아이디)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">- Must not be empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">- Must match the regular expression <code>[a-zA-Z\d]{3,20}</code></p>
+<p class="tableblock">- Must not be empty</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>password</code></p></td>
@@ -602,7 +603,7 @@ Host: localhost:8080
 Vary: Origin
 Vary: Access-Control-Request-Method
 Vary: Access-Control-Request-Headers
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJidXllcjEiLCJhdXRoIjpbIkJVWUVSIl0sImV4cCI6MTY2MzUyNDE2MX0.ssXGEVq56kbbg2QwlQNcRtmFVVl0nsr3im9Sllug_IKlbjD5utITBQPL3V7w8hnqUO2-WEkw1HPlQrkbtL_0Xw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJidXllcjEiLCJhdXRoIjpbIkJVWUVSIl0sImV4cCI6MTY2NDYzMDI2NX0.u7YKeid3o_z4Z6IoxAaOT6lTurI7fhGW80dmf1nz08EDfS7kONqKpcxbUPACIci_0m5gvtbODigf1vC1DPTU0Q
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate

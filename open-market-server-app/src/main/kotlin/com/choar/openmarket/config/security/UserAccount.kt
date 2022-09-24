@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.User as UserDetailsUser
 
 class UserAccount(
     user: User,
-    authorities: Collection<GrantedAuthority>,
+    authority: GrantedAuthority,
 ) : UserDetailsUser(
     user.username,
     user.password,
-    authorities,
+    listOf(authority),
 )

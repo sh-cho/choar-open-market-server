@@ -10,19 +10,16 @@ class User(
 
     @Column
     var password: String,
+
+    @Column
+    var roleName: String,
+
+    @Column
+    var phoneNumber: String?,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0L
-
-    // TODO: FetchType.LAZY로 변경
-    @ManyToMany(fetch = FetchType.EAGER, cascade = [CascadeType.MERGE])
-    @JoinTable(
-        name = "user_role",
-        joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "id")],
-        inverseJoinColumns = [JoinColumn(name = "role_id", referencedColumnName = "id")]
-    )
-    val roles: MutableSet<Role> = mutableSetOf()
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
