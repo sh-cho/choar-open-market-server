@@ -41,7 +41,7 @@ jobs:
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'open-market-server-app/build'
+          path: 'open-market-server-app/build/docs/asciidoc/index.html'
 
   deploy:
     needs: build
