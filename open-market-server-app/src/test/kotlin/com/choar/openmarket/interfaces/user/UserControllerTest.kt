@@ -80,10 +80,11 @@ internal class UserControllerTest {
     @DisplayName("구매자 회원가입")
     fun signUpBuyer() {
         val buyerSignupRequest = BuyerSignupRequest(
-            "vincetest",
+            "vince_buyer",
             "password123",
+            "vince_buyer@example.com",
             "01012341234",
-            "빈스",
+            "빈스구매자",
         )
 
         val fields = ConstrainedFields(BuyerSignupRequest::class.java)
@@ -100,8 +101,46 @@ internal class UserControllerTest {
                     requestFields(
                         fields.withPath("username").description("유저명 (아이디)"),
                         fields.withPath("password").description("패스워드"),
+                        fields.withPath("email").description("이메일"),
                         fields.withPath("phoneNumber").description("핸드폰 번호"),
                         fields.withPath("name").description("이름"),
+                    ),
+                )
+            )
+    }
+
+    @Test
+    @DisplayName("판매자 회원가입")
+    fun signUpSeller() {
+        val buyerSignupRequest = SellerSignupRequest(
+            "vince_seller",
+            "password123",
+            "vince_seller@example.com",
+            "01012341234",
+            "빈스판매자",
+            "1234567890",
+            "스토어1",
+        )
+
+        val fields = ConstrainedFields(SellerSignupRequest::class.java)
+
+        mockMvc.perform(
+            post("/users/signup/seller")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(Json.encodeToString(buyerSignupRequest))
+        )
+            .andExpect(status().isCreated)
+            .andDo(
+                document(
+                    "users/signup-seller",
+                    requestFields(
+                        fields.withPath("username").description("유저명 (아이디)"),
+                        fields.withPath("password").description("패스워드"),
+                        fields.withPath("email").description("이메일"),
+                        fields.withPath("phoneNumber").description("핸드폰 번호"),
+                        fields.withPath("name").description("이름"),
+                        fields.withPath("businessRegistrationNumber").description("사업자 등록번호"),
+                        fields.withPath("storeName").description("스토어 이름"),
                     ),
                 )
             )

@@ -89,7 +89,7 @@ tasks {
 	}
 
 	build {
-		dependsOn("copyDocument")
+//		dependsOn("copyDocument")
 	}
 
 	asciidoctor {

@@ -14,6 +14,9 @@ class User(
     @Column
     var roleName: String,
 
+    @Column(unique = true)
+    var email: String,
+
     @Column
     var phoneNumber: String?,
 ) {
@@ -28,16 +31,20 @@ class User(
         other as User
 
         if (username != other.username) return false
-        if (id != other.id) return false
         if (password != other.password) return false
+        if (roleName != other.roleName) return false
+        if (phoneNumber != other.phoneNumber) return false
+        if (id != other.id) return false
 
         return true
     }
 
     override fun hashCode(): Int {
         var result = username.hashCode()
-        result = 31 * result + id.hashCode()
         result = 31 * result + password.hashCode()
+        result = 31 * result + roleName.hashCode()
+        result = 31 * result + (phoneNumber?.hashCode() ?: 0)
+        result = 31 * result + id.hashCode()
         return result
     }
 }

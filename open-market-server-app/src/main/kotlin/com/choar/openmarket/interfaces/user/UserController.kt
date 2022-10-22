@@ -2,6 +2,7 @@ package com.choar.openmarket.interfaces.user
 
 import com.choar.openmarket.application.UserService
 import com.choar.openmarket.interfaces.common.UserDto
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -20,7 +21,7 @@ class UserController(
     private val userService: UserService,
 ) {
 
-    val logger = LoggerFactory.getLogger(javaClass)
+    val logger: Logger = LoggerFactory.getLogger(javaClass)
 
     // TODO: @AuthenticationPrincipal 로 정보 들고오기?
     // (참고 - https://bbbicb.tistory.com/48)
@@ -35,6 +36,19 @@ class UserController(
 
         return try {
             userService.save(buyerSignupRequest)
+            ResponseEntity(HttpStatus.CREATED)
+        } catch (e: Exception) {
+            logger.warn(e.message)
+            ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+        }
+    }
+
+    @PostMapping("signup/seller")
+    fun signUpSeller(@RequestBody @Valid sellerSignupRequest: SellerSignupRequest): ResponseEntity<Void> {
+        logger.info(sellerSignupRequest.toString())
+
+        return try {
+            userService.save(sellerSignupRequest)
             ResponseEntity(HttpStatus.CREATED)
         } catch (e: Exception) {
             logger.warn(e.message)
