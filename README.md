@@ -18,4 +18,5 @@
 - [x] restdocs
 
 ## Reference
+- https://github.com/choar816/open-market/
 - https://paullabworkspace.notion.site/API-7b57a2b656fd4e3790a6a360b69aa3ad
